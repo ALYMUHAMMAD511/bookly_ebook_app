@@ -11,7 +11,6 @@ class SearchCubit extends Cubit<SearchState> {
   final SearchRepo searchRepo;
 
   Future<void> searchBooks(String query) async {
-    emit(SearchLoadingState());
 
     var result = await searchRepo.searchBooks(query);
 

@@ -8,7 +8,6 @@ abstract class SearchState
 
 final class SearchInitialState extends SearchState {}
 
-final class SearchLoadingState extends SearchState {}
 
 final class SearchSuccessState extends SearchState
 {

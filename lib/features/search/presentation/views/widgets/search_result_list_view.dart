@@ -1,5 +1,4 @@
-import 'package:bookly_ebook_app/core/widgets/custom_error.dart';
-import 'package:bookly_ebook_app/core/widgets/custom_loading_indicator.dart';
+import 'package:bookly_ebook_app/core/utils/styles.dart';
 import 'package:bookly_ebook_app/features/search/presentation/manager/search_cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,13 +37,15 @@ class SearchResultListView extends StatelessWidget {
             itemCount: state.bookModel.length,
           );
         }
-        else if (state is SearchFailureState)
-        {
-          return CustomError(error: state.error);
-        }
         else
         {
-          return const CustomLoadingIndicator();
+          return const Center(
+            child: Text(
+              'Search for a Book',
+              style: Styles.textStyle18,
+              textAlign: TextAlign.center,
+            ),
+          );
         }
       },
     );

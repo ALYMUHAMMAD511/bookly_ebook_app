@@ -1,6 +1,6 @@
 import 'package:bookly_ebook_app/constants.dart';
 import 'package:bookly_ebook_app/core/utils/styles.dart';
-import 'package:bookly_ebook_app/core/widgets/custom_loading_indicator.dart';
+import 'package:bookly_ebook_app/core/widgets/custom_shimmer.dart';
 import 'package:bookly_ebook_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_ebook_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -36,7 +36,7 @@ class BooksListViewItem extends StatelessWidget {
                       'https://diybookcovers.com/wp-content/uploads/2023/07/scifi4thumb.jpg',
                   fit: BoxFit.fill,
                   errorWidget: (context, url, error) => const Icon(Icons.error),
-                  placeholder: (context, url) => const CustomLoadingIndicator(),
+                  placeholder: (context, url) => const CustomShimmer(width: 75, height: 120),
                 ),
               ),
             ),

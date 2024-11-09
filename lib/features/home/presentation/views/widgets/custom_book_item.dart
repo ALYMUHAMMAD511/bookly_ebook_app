@@ -1,4 +1,4 @@
-import 'package:bookly_ebook_app/core/widgets/custom_loading_indicator.dart';
+import 'package:bookly_ebook_app/core/widgets/custom_shimmer.dart';
 import 'package:bookly_ebook_app/features/home/data/models/book_model/book_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ class CustomBookItem extends StatelessWidget {
           imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail ??
               'https://diybookcovers.com/wp-content/uploads/2023/07/scifi4thumb.jpg',
           fit: BoxFit.fill,
-          placeholder: (context, url) => const CustomLoadingIndicator(),
+          placeholder: (context, url) => const CustomShimmer(width: 225, height: 110),
           errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
       ),
