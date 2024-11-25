@@ -1,8 +1,8 @@
 import 'package:bookly_ebook_app/core/utils/app_router.dart';
 import 'package:bookly_ebook_app/core/widgets/custom_error.dart';
-import 'package:bookly_ebook_app/core/widgets/custom_loading_indicator.dart';
 import 'package:bookly_ebook_app/features/home/presentation/manager/cubits/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookly_ebook_app/features/home/presentation/views/widgets/custom_book_item.dart';
+import 'package:bookly_ebook_app/features/home/presentation/views/widgets/custom_books_shimmer/custom_books_shimmer_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -12,6 +12,8 @@ class FeaturedBooksListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double h = MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
     return BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
       builder: (context, state) {
         if(state is FeaturedBooksSuccessState)
@@ -54,7 +56,10 @@ class FeaturedBooksListView extends StatelessWidget {
         }
         else
         {
-            return const CustomLoadingIndicator();
+            return CustomBooksShimmerListView(
+              height: h * 0.276,
+              width: w * 0.416,
+            );
         }
       },
     );

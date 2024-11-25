@@ -1,7 +1,7 @@
 import 'package:bookly_ebook_app/core/widgets/custom_error.dart';
-import 'package:bookly_ebook_app/core/widgets/custom_loading_indicator.dart';
 import 'package:bookly_ebook_app/features/home/presentation/manager/cubits/newest_books_cubit/newest_books_cubit.dart';
 import 'package:bookly_ebook_app/features/home/presentation/views/widgets/books_list_view_item.dart';
+import 'package:bookly_ebook_app/features/home/presentation/views/widgets/newest_books_shimmer/newest_books_shimmer_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,7 +28,7 @@ class NewestBooksListView extends StatelessWidget {
         } else if (state is NewestBooksFailureState) {
           return CustomError(error: state.error);
         } else {
-          return const CustomLoadingIndicator();
+          return const NewestBooksShimmerListView();
         }
       },
     );

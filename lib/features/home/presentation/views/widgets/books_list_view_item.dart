@@ -1,12 +1,11 @@
 import 'package:bookly_ebook_app/constants.dart';
 import 'package:bookly_ebook_app/core/utils/styles.dart';
-import 'package:bookly_ebook_app/core/widgets/custom_shimmer.dart';
 import 'package:bookly_ebook_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_ebook_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:shimmer/shimmer.dart';
 import '../../../../../core/utils/app_router.dart';
 
 class BooksListViewItem extends StatelessWidget {
@@ -16,6 +15,8 @@ class BooksListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double h = MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
         GoRouter.of(context).push(
@@ -36,7 +37,19 @@ class BooksListViewItem extends StatelessWidget {
                       'https://diybookcovers.com/wp-content/uploads/2023/07/scifi4thumb.jpg',
                   fit: BoxFit.fill,
                   errorWidget: (context, url, error) => const Icon(Icons.error),
-                  placeholder: (context, url) => const CustomShimmer(width: 75, height: 120),
+                  progressIndicatorBuilder: (context, url, progress) =>
+                      Shimmer.fromColors(
+                        baseColor: Colors.grey[600]!,
+                        highlightColor: Colors.grey[400]!,
+                        child: Container(
+                          width: w * 0.23,
+                          height: h * 0.18,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[600],
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
                 ),
               ),
             ),
